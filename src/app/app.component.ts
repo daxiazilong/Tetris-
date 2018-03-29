@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(ShapeShanComponent);
     this.curComponent = viewContainerRef.createComponent(componentFactory);
 
-    this.curComponent.instance.animate();
+    // this.curComponent.instance.animate();
 
   }
   private createContainer(){
@@ -58,7 +58,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.curComponent = null
   }
   handleMove(e){
-    console.log(e)
     switch( e.key ){
       case 'ArrowRight':
               this.curComponent.instance.moveRight();

@@ -1,7 +1,7 @@
 import{Injectable,EventEmitter } from '@angular/core';
 @Injectable()
 export class appService {
-    public difficulty:number = 100;//游戏难度
+    public difficulty:number = 200;//游戏难度
     public isAniFinshed: EventEmitter<boolean>;
     public gameBox = (() => {
         var gameBox = [];

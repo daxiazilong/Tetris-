@@ -29,6 +29,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
             }
 
             if(
+              this.service.gameBox[curRow][curCol+2] !== undefined && // 90度和270度开始旋转的时候如果到达边界就会出现bug 故而有这条语句
               this.service.gameBox[curRow][curCol + 1 ] !==1 &&
               this.service.gameBox[curRow ][curCol] !==1 &&
               this.service.gameBox[curRow][curCol + 1] !== 1 &&
@@ -37,6 +38,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
               transformStr = "rotateZ(" + this.curDeg + "deg) translate3d(0,0,0)";
             }else{
               this.curDeg -= 90;
+              return;
             }
               
               break;
@@ -55,6 +57,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                   transformStr = "rotateZ(" + this.curDeg + "deg) translate3d(0,20px,0)";
                 }else{
                   this.curDeg -= 90;
+                  return;
                 }
               
               break;
@@ -65,6 +68,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                 return;
               }
               if(
+                (this.service.gameBox[curRow][curCol + 2] !== undefined) &&
                 this.service.gameBox[curRow][curCol] !==1 &&
                 this.service.gameBox[curRow ][curCol + 1] !==1 &&
                 this.service.gameBox[curRow][curCol + 2] !== 1 &&
@@ -73,6 +77,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                 transformStr = "rotateZ(" + this.curDeg + "deg) translate3d(0px,20px,0)";
               }else{
                 this.curDeg -= 90;
+                return;
               }            
               break;
       case 270:
@@ -90,6 +95,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                 transformStr = "rotateZ(" + this.curDeg + "deg) translate3d(0,0,0)";
               }else{
                 this.curDeg -= 90;
+                return;
               }
               
               break;
@@ -166,6 +172,23 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                     console.log(this.service.gameBox)
                     this.service.isAniFinshed.emit( true );
                 }
+                break;
+        case 270:
+                col = this.curLeft / 20;
+                row = this.curTop / 20;
+                if(
+                  this.service.gameBox[row + 3] &&
+                  this.service.gameBox[row + 2 ][col] !== 1 &&
+                  this.service.gameBox[row+3][col+1] !==1
+                ){
+                  this.curTop += 20;
+                  this.animate()
+                }else{
+                  this.service.gameBox[row][col+1] = this.service.gameBox[row+1][col] = this.service.gameBox[row+1][col+1] = this.service.gameBox[row+2][col+1] = 1
+                  console.log(this.service.gameBox)
+                  this.service.isAniFinshed.emit( true );
+                }
+                break;
         default:
                 break;
         
@@ -180,11 +203,15 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
     switch( this.curDeg % 360 ){
       case 0://形状1
             if( curCol < 7 ){//没有到达右边界
-                if( this.service.gameBox[curRow + 1 ][curCol + 4] !==1 ){//保证他的右边没有其他盒子
+                if( 
+                    this.service.gameBox[curRow + 1 ][curCol + 4] !==1 &&
+                    this.service.gameBox[curRow][curCol + 2] !==1
+                  ){//保证他的右边没有其他盒子
                     this.curLeft += 20
                 }
                     
             }
+
               break;
       case 90://顺时针旋转90后
               if( curCol < 8 ){//同上
@@ -197,6 +224,29 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                 }
               }
               break;  
+      case 180:
+              if( curCol < 7 ){
+                if( 
+                    this.service.gameBox[curRow][curCol+3] !==1 &&
+                    this.service.gameBox[curRow+1][curCol+2] !==1
+
+                   ){
+                    this.curLeft += 20
+                }
+              }
+              break;
+      case 270:
+              if( curCol < 8 ){
+                  if(
+                    this.service.gameBox[curRow][curCol+2] !== 1 &&
+                    this.service.gameBox[curRow+1][curCol+2] !== 1 &&
+                    this.service.gameBox[curRow+2][curCol+2] !== 1 
+                  ){
+                    this.curLeft += 20
+                  }
+              }
+                
+              break;
       default:
               break;
     }
@@ -207,20 +257,38 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
       if( curCol > 0 ){//没有到达左边界
         switch (this.curDeg % 360){
           case 0:               
-                if( this.service.gameBox[curRow + 1][ curCol - 1 ] !== 1 && this.service.gameBox[curRow][ curCol - 2 ] !== 1 ){//保证他的左边边没有其他盒子
-                    this.curLeft -= 20;
-                } 
-                console.log(this.service.gameBox)                
-                break;
+                  if( this.service.gameBox[curRow + 1][ curCol - 1 ] !== 1 && this.service.gameBox[curRow][ curCol - 2 ] !== 1 ){//保证他的左边边没有其他盒子
+                      this.curLeft -= 20;
+                  } 
+                  console.log(this.service.gameBox)                
+                  break;
           case 90:
-                if(
-                  this.service.gameBox[curRow][curCol-1] !==1 && 
-                  this.service.gameBox[curRow+1][curCol - 1 ] !== 1 &&
-                  this.service.gameBox[curRow+2][curCol - 1 ] !== 1
-                ){
-                  this.curLeft -= 20;
-                }
-                break;
+                  if(
+                    this.service.gameBox[curRow][curCol-1] !==1 && 
+                    this.service.gameBox[curRow+1][curCol - 1 ] !== 1 &&
+                    this.service.gameBox[curRow+2][curCol - 1 ] !== 1
+                  ){
+                    this.curLeft -= 20;
+                  }
+                  break;
+          case 180:
+                  if(
+                    this.service.gameBox[curRow][curCol-1] !==1 &&
+                    this.service.gameBox[curRow][curCol-1] !==1 
+                  ){
+                    this.curLeft -= 20;
+                  }
+                  break;
+          case 270:
+                  if(
+                    this.service.gameBox[curRow][curCol] !==1 &&
+                    this.service.gameBox[curRow + 1 ][ curCol -1 ] !== 1&&
+                    this.service.gameBox[curRow + 2 ][curCol] !==1
+                  ){
+                    this.curLeft -= 20;
+                  }
+                  break;
+                
         }
     }
   }
