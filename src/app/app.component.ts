@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(ShapeShanComponent);
     this.curComponent = viewContainerRef.createComponent(componentFactory);
 
-    // this.curComponent.instance.animate();
+    this.curComponent.instance.animate();
 
   }
   private createContainer(){
