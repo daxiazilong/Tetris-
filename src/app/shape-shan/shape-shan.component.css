@@ -1,0 +1,26 @@
+ul{
+    position: absolute;
+    top:0;
+    left:0;
+    width:60px;
+    height:40px;
+    padding:0;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform-origin: 30px 30px;
+        -ms-transform-origin: 30px 30px;
+            transform-origin: 30px 30px;
+}
+ul li{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+}
+ul li:nth-of-type(1){
+    display: block;
+    margin: 0 auto;
+}

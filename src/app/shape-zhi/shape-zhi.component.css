@@ -1,0 +1,29 @@
+ul{
+    position: absolute;
+    top:0;
+    left:0;
+    padding:0;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    width: 60px;
+    height:40px;
+}
+ul li{
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background:#000;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+}
+ul li:nth-of-type(3){
+    position: absolute;
+    top:20px;
+    left:20px;
+}
+ul li:nth-of-type(4){
+    position: absolute;
+    top:20px;
+    left:40px;
+}
