@@ -32,17 +32,29 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(){}
   
   ngOnInit(){
-    this.createComponent();
-    this.service.isAniFinshed.subscribe( isAniFinished => {
+    this.createComponent();//创造组件
+    this.service.isAniFinshed.subscribe( isAniFinished => {//如果组件已完成
       if( isAniFinished ){
         this.destroy();
       }
     } )
-    
+    document.onkeypress = this.handleMove.bind(this);
   }
   destroy(){
     // this.curComponent.destroy();
-    this.curComponent = null
+    // this.curComponent = null
     this.createComponent();
+  }
+  handleMove(e){
+    switch( e.key ){
+      case 'd':
+              this.curComponent.instance.moveRight();
+              break;
+      case 'a':
+              this.curComponent.instance.moveLeft();
+              break; 
+      default:
+              break;
+    }
   }
 }

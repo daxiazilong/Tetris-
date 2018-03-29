@@ -43,7 +43,7 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                      }
                 if(this.service.gameBox[row] !== undefined && this.service.gameBox[row][col] == 0 && this.service.gameBox[row][col+1] == 0 &&  this.service.gameBox[row][col+2] == 0 ){
                     this.curTop += 20;
-                    // this.animate()
+                    this.animate()
                 }else{
                 
                   this.service.gameBox[row-1][col] = this.service.gameBox[row-1][col+1] =this.service.gameBox[row-1][col+2] = this.service.gameBox[row-2][col+1] = 1;
@@ -58,10 +58,27 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
     },this.service.difficulty)
     console.log( this.service.difficulty )
   }
-  handleMove(e){
-    console.log(e)
+  moveRight(){
+    let curRow = this.curLeft / 20;
+    switch( this.curDeg % 360 ){
+      case 0:
+            if( curRow < 7 ){
+              this.curLeft += 20
+            }
+
+              break;
+      default:
+              break;
+    }
   }
-  handleClick(e){
-    console.log(e)
+  moveLeft(){
+    let curRow = this.curLeft / 20;
+    switch (this.curDeg % 360){
+      case 0:
+            if( curRow > 0 ){
+              this.curLeft -= 20;
+            }
+            break;
+    }
   }
 }
