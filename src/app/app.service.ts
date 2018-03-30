@@ -13,7 +13,7 @@ export class appService {
         }
         return gameBox;
     })()
-
+    public scores :number = 0;
     constructor(){
         this.isAniFinshed = new EventEmitter();
     }

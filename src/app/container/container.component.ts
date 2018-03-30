@@ -17,12 +17,15 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
   ngAfterViewChecked(){
     let preLength = this.boxes.length;
     // debugger;
+    let count:number = 0;//评分，系统 每消掉一行加1分，连续消掉n行， 分数 = n*n
     this.boxes.forEach( (item,index) => {
           if((/1111111111/).test(item.join(''))){
             this.boxes.splice(index,1);
+            count++;
           }
           
     })
+    this.service.scores += count*count
     while(this.boxes.length < preLength){
       this.boxes.unshift('0000000000'.split(''))
     }
