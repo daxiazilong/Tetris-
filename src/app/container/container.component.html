@@ -2,7 +2,7 @@
     <div>    
         <ul  [style.top]="i*20 + 'px'">
           <li *ngFor="let item of box;let lt = index" [style.left]="lt*20 + 'px'"
-            [style.display] = " item == 0 ? 'none' : block"
+            [style.display] = " item === 0 ? 'none' : block"
           ></li>
         </ul>
     </div>

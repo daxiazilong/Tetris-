@@ -2,9 +2,11 @@
     position: absolute;
     width: 80px;
     font-size:0;
-    -webkit-transition:all .2s;
+     -webkit-transition:all .2s;
     -o-transition:all .2s;
-    transition:all .2s;
+    transition:all .2s; 
+    /* 有动画虽然视觉上好看一点，但异步性一定会产生bug 所以这个组建我决定放弃 动画 */
+    /* 放弃动画简直 简直emmmm 没法看了 还是不放弃把 - - */
 }
 .container .box{
     -webkit-box-sizing: border-box;

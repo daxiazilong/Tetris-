@@ -27,7 +27,7 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
     })
     this.service.scores += count*count
     while(this.boxes.length < preLength){
-      this.boxes.unshift('0000000000'.split(''))
+      this.boxes.unshift([0,0,0,0,0,0,0,0,0,0])
     }
   }
   render(){

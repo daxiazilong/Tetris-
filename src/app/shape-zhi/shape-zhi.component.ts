@@ -52,11 +52,58 @@ export class ShapeZhiComponent implements OnInit,CommonMethods {
       default:
               break;
     }
-    console.log(transformString);
     this.transformString = this.sanitizer.bypassSecurityTrustStyle( transformString );
   }
   animate(){
-    
+   
+        setTimeout( () => {
+          let curRow = this.curTop / 20,//当前行和列只能在这个时间线上取，否则会产生异步错误，时光倒流 -.- 
+          curCol = this.curLeft / 20
+          try{//判断是否已经堆积到最顶了
+            this.service.gameBox[0].forEach( item => {
+              if( item == 1 ){
+                throw new Error('游戏结束');               
+              }
+          })   
+         }catch(ex){
+            alert(ex);
+            return;
+         }
+       
+          switch(this.curDeg % 360){
+            case 0:
+            case 180:
+                      if(
+                        this.service.gameBox[ curRow + 2] &&
+                        this.service.gameBox[curRow + 1][curCol] === 0 &&
+                        this.service.gameBox[ curRow + 2][ curCol + 1 ] === 0 &&
+                        this.service.gameBox[ curRow + 2][ curCol + 2 ] === 0
+                      ){
+                        this.curTop += 20;
+                        this.animate();
+                      }else{
+                        this.service.gameBox[curRow][curCol] =  this.service.gameBox[curRow][curCol + 1] =  this.service.gameBox[curRow + 1 ][curCol + 1] =  this.service.gameBox[curRow + 1 ][curCol + 2] = 1;
+                        this.service.isAniFinshed.emit( true );
+                      }
+                      break;
+            case 90:
+            case 270:
+                      if(
+                        this.service.gameBox[curRow + 3] &&//主要是为了防止当落到底部时 数组越界访问，造成的error,其他处代码类似
+                        this.service.gameBox[curRow + 3][ curCol ] === 0 &&
+                        this.service.gameBox[curRow + 2][ curCol+1 ] === 0
+                      ){
+                        this.curTop += 20;
+                        this.animate();
+                      }else{
+                        this.service.gameBox[curRow][curCol+1] =  this.service.gameBox[curRow+1][curCol] = this.service.gameBox[curRow+1][curCol+1] = this.service.gameBox[curRow+2][curCol] = 1;
+                        this.service.isAniFinshed.emit( true );
+                      }
+                      break;
+            default:break;
+          }
+        } , this.service.difficulty)
+          
   }
   moveLeft(){//之字形 旋转状态只有两种，故而采用如下的switch case语句
     let curRow = this.curTop / 20,

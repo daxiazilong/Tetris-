@@ -16,19 +16,19 @@ import { appService } from './app.service';
 export class AppComponent implements OnInit, OnDestroy {
   private curComponent;
   private curContainer = null;
-  private isStart:boolean = true;
+  private isStart:boolean = false;
 
   @ViewChild(InsertDirectiveDirective) adHost: InsertDirectiveDirective;
   @ViewChild(InsertContainerDirective) containerHost: InsertContainerDirective;
   constructor(private componentFactoryResolver: ComponentFactoryResolver,public service: appService) { }
   private createComponent(){
     let viewContainerRef = this.adHost.viewContainerRef;
-    let component = [ShapeYi,ShapeTianComponent,ShapeShanComponent,ShapeZhiComponent][Math.round(Math.random()*3)];
-
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(ShapeZhiComponent);
+    let component = [ShapeYi,ShapeShanComponent,ShapeZhiComponent][Math.round(Math.random()*2)];
+// ShapeTianComponent我目前还没有完成，
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     this.curComponent = viewContainerRef.createComponent(componentFactory);
 
-    // this.curComponent.instance.animate();
+    this.curComponent.instance.animate();
 
   }
   private createContainer(){
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(){}
   
   ngOnInit(){
-    this.start()
+    // this.start()
   }
   start(){
     this.createComponent();//创造组件

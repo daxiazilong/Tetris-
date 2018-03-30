@@ -169,7 +169,6 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                   this.animate()
                 }else{
                     this.service.gameBox[row][col] = this.service.gameBox[row][col+1] = this.service.gameBox[row][col+2] = this.service.gameBox[row+1][col+1] = 1
-                    console.log(this.service.gameBox)
                     this.service.isAniFinshed.emit( true );
                 }
                 break;
@@ -185,7 +184,6 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
                   this.animate()
                 }else{
                   this.service.gameBox[row][col+1] = this.service.gameBox[row+1][col] = this.service.gameBox[row+1][col+1] = this.service.gameBox[row+2][col+1] = 1
-                  console.log(this.service.gameBox)
                   this.service.isAniFinshed.emit( true );
                 }
                 break;
