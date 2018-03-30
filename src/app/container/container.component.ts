@@ -15,6 +15,10 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
      
   }
   ngAfterViewChecked(){
+    
+  }
+
+  score(){
     let preLength = this.boxes.length;
     // debugger;
     let count:number = 0;//评分，系统 每消掉一行加1分，连续消掉n行， 分数 = n*n
@@ -30,6 +34,7 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
       this.boxes.unshift([0,0,0,0,0,0,0,0,0,0])
     }
   }
+
   render(){
     let beginIndex : number; //开始渲染的行数；
     this.boxes =  this.service.gameBox;
@@ -44,6 +49,7 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
     }catch(index){
       this.start = index;
     }
+    this.score();
       
   }
 
