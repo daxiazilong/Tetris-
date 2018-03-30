@@ -14,8 +14,8 @@ just git clone it and after npm i, type ng serve -o,play this game
 1. this project is assembled by a main component, a container component ,and shapeComponent ;
 2. Main component is named app.commponent that in charge of load dynamic container component and shapeComponent;
 3. Shape component is the shape appear at game's interfae, it's has four-kind-of shape:
-    1. Shape-yi  just like  Chinese characters '一' is a straight and horizontal line;
-    2.S
+    > 1. Shape-yi  just like  Chinese characters '一' is a straight and horizontal line;
+    > 2.S
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
