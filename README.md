@@ -1,6 +1,13 @@
 # Tetris
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+# run?
+just git clone it and after npm i, type ng serve -o,play this game
+
+# keyGuide
+### transform -> arrowUp
+### leftMove -> arrowLeft
+### rightMove -> arrowRight
 
 ## Development server
 
