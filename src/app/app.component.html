@@ -2,6 +2,10 @@
   <div class="left">
     <ng-template component></ng-template>
     <ng-template container></ng-template>
+    <div class="start" 
+    *ngIf="!isStart"
+    (click) = "handleStart()"
+    >点击开始</div>
   </div>
   <div class="aside"(click) = "destroy()">
      <h5>分数:<br />{{service.scores}}</h5> 

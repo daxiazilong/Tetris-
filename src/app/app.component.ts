@@ -16,7 +16,7 @@ import { appService } from './app.service';
 export class AppComponent implements OnInit, OnDestroy {
   private curComponent;
   private curContainer = null;
- 
+  private isStart:boolean = false;
 
   @ViewChild(InsertDirectiveDirective) adHost: InsertDirectiveDirective;
   @ViewChild(InsertContainerDirective) containerHost: InsertContainerDirective;
@@ -43,6 +43,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(){}
   
   ngOnInit(){
+   
+  }
+  start(){
     this.createComponent();//创造组件
     this.service.isAniFinshed.subscribe( isAniFinished => {//如果组件已完成
       if( isAniFinished ){
@@ -52,6 +55,10 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     } )
     document.onkeydown = this.handleMove.bind(this);
+  }
+  handleStart(){
+      this.isStart = true;
+      this.start();
   }
   destroy(){
     this.curComponent.destroy();
