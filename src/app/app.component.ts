@@ -16,7 +16,7 @@ import { appService } from './app.service';
 export class AppComponent implements OnInit, OnDestroy {
   private curComponent;
   private curContainer = null;
-  private isStart:boolean = false;
+  private isStart:boolean = true;
 
   @ViewChild(InsertDirectiveDirective) adHost: InsertDirectiveDirective;
   @ViewChild(InsertContainerDirective) containerHost: InsertContainerDirective;
@@ -25,10 +25,10 @@ export class AppComponent implements OnInit, OnDestroy {
     let viewContainerRef = this.adHost.viewContainerRef;
     let component = [ShapeYi,ShapeTianComponent,ShapeShanComponent,ShapeZhiComponent][Math.round(Math.random()*3)];
 
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(ShapeShanComponent);
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(ShapeZhiComponent);
     this.curComponent = viewContainerRef.createComponent(componentFactory);
 
-    this.curComponent.instance.animate();
+    // this.curComponent.instance.animate();
 
   }
   private createContainer(){
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(){}
   
   ngOnInit(){
-   
+    this.start()
   }
   start(){
     this.createComponent();//创造组件
