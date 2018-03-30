@@ -16,9 +16,9 @@ just git clone it and after npm i, type ng serve -o,play this game
 3. Shape component is the shape appear at game's interfae, it's has four-kind-of shape:      
 
      1. Shape-yi  just like  Chinese characters '一' is a straight and horizontal line;       
-     2. Shape-shan just like  Chinese characters '山';    
-     3. Shape-zhi just like Chinese characters '之';
-     4. Shape-tian just like Chinese characters '田' is a square;
+     2. Shape-shan just like  Chinese characters '山';              
+     3. Shape-zhi just like Chinese characters '之';                         
+     4. Shape-tian just like Chinese characters '田' is a square;              
 ---   
 Until tody,2018-08-30-10.15 AM, I finished Shape-shan's transform,animate,move and other function of game.For Example, count Score, the abstract Modal of this game.
 Now i hope someone who can establish this game with Me
