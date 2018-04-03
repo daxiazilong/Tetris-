@@ -19,7 +19,7 @@ just git clone it and after npm i, type ng serve -o,play this game
     + Shape-zhi just like Chinese characters '之';                         
     + Shape-tian just like Chinese characters '田' is a square;              
 ---   
-Until tody,2018-08-30-10.15 AM, I finished Shape-shan's,Shape-yi's,Shape-zhi's transform,animate,move and other function of game.For Example, count Score, the abstract Modal of this game.
+Until tody,2018-04-03 9.27 AM, I finished Shape-shan's,Shape-yi's,Shape-zhi's transform,animate,move and other function of game.For Example, count Score, the abstract Modal of this game.
 Now i hope someone who can establish this game with Me
 ## Development server
 
