@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewChecked } from '@angular/core';
+import { Component, OnInit,AfterViewChecked,DoCheck } from '@angular/core';
 import { appService } from '../app.service';
 // 当组件动画结束之后，游戏盒子内展示的真正内容
 @Component({
@@ -6,7 +6,7 @@ import { appService } from '../app.service';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.css']
 })
-export class ContainerComponent implements OnInit,AfterViewChecked {
+export class ContainerComponent implements OnInit,AfterViewChecked,DoCheck {
   private boxes:Array<any>;
   private start:number = 0;
   constructor( public service: appService) { }
@@ -17,7 +17,7 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
   ngAfterViewChecked(){
     
   }
-  ngDoCheck() {
+  ngDoCheck() {//在这里检测 是否有可以得分的一行 ，如果有就继续调用score
     let mark = false;
     this.boxes.forEach( (item,index) => {
       if((/1111111111/).test(item.join(''))){
