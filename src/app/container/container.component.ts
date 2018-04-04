@@ -17,7 +17,18 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
   ngAfterViewChecked(){
     
   }
+  ngDoCheck() {
+    let mark = false;
+    this.boxes.forEach( (item,index) => {
+      if((/1111111111/).test(item.join(''))){
+          mark = true;
+      }  
+    })
+    if( mark ){
+      this.score();
+    }
 
+  }
   score(){
     let preLength = this.boxes.length;
     // debugger;
@@ -47,7 +58,7 @@ export class ContainerComponent implements OnInit,AfterViewChecked {
         });
     });
     }catch(index){
-      this.start = index;
+      this.start = parseInt(index);
     }
     this.score();
       
