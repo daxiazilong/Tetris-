@@ -20,8 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public debug: boolean = true;
 
-  @ViewChild(InsertDirectiveDirective) adHost: InsertDirectiveDirective;
-  @ViewChild(InsertContainerDirective) containerHost: InsertContainerDirective;
+  @ViewChild(InsertDirectiveDirective, { static: true }) adHost: InsertDirectiveDirective;
+  @ViewChild(InsertContainerDirective, { static: true }) containerHost: InsertContainerDirective;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     public service: appService
