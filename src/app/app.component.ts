@@ -14,16 +14,16 @@ import { appService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private curComponent;
-  private curContainer = null;
-  private isStart:boolean = false;
+  public curComponent;
+  public curContainer = null;
+  public isStart:boolean = false;
 
   public debug: boolean = true;
 
   @ViewChild(InsertDirectiveDirective, { static: true }) adHost: InsertDirectiveDirective;
   @ViewChild(InsertContainerDirective, { static: true }) containerHost: InsertContainerDirective;
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
+    public componentFactoryResolver: ComponentFactoryResolver,
     public service: appService
   ) { }
   private createComponent(){

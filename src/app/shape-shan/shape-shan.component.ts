@@ -8,11 +8,11 @@ import { appService } from '../app.service';
   styleUrls: ['./shape-shan.component.css']
 })
 export class ShapeShanComponent implements OnInit,CommonMethods {
-  private curDeg:number = 0;
-  private curTop:number = 0;
-  private curLeft:number = 0;
-  private transformString;
-  constructor(public service: appService, private sanitizer: DomSanitizer) { 
+  public curDeg:number = 0;
+  public curTop:number = 0;
+  public curLeft:number = 0;
+  public transformString;
+  constructor(public service: appService, public sanitizer: DomSanitizer) { 
     this.transformString = sanitizer.bypassSecurityTrustStyle( this.transformString)
    }
   transform(){
@@ -290,4 +290,5 @@ export class ShapeShanComponent implements OnInit,CommonMethods {
         }
     }
   }
+  speedUp(){}
 }

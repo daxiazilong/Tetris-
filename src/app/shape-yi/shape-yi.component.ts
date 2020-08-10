@@ -9,14 +9,14 @@ import { appService } from '../app.service';
   styleUrls: ['./shape-yi.component.css']
 })
 export class ShapeYi implements OnInit,CommonMethods {
-  private curTop:number = 0;
-  private curLeft: number = 0;
-  private curDeg: number = 0;
+  public curTop:number = 0;
+  public curLeft: number = 0;
+  public curDeg: number = 0;
 
-  private isFinish: boolean = false;
+  public isFinish: boolean = false;
 
-  private transformString;
-  constructor(private sanitizer: DomSanitizer,public service: appService) { }
+  public transformString;
+  constructor(public sanitizer: DomSanitizer,public service: appService) { }
 
 
 

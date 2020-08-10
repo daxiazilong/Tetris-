@@ -9,11 +9,11 @@ import { appService } from '../app.service';
   styleUrls: ['./shape-zhi.component.css']
 })
 export class ShapeZhiComponent implements OnInit,CommonMethods {
-  private curTop:number = 0;
-  private curLeft: number = 0;
-  private curDeg: number = 0;
-  private transformString;
-  constructor(private sanitizer: DomSanitizer,public service: appService) { }
+  public curTop:number = 0;
+  public curLeft: number = 0;
+  public curDeg: number = 0;
+  public transformString;
+  constructor(public sanitizer: DomSanitizer,public service: appService) { }
 
   ngOnInit() {
   }
@@ -163,5 +163,6 @@ export class ShapeZhiComponent implements OnInit,CommonMethods {
                       break;
         }
   }
+  speedUp(){}
       
   }

@@ -7,8 +7,8 @@ import { appService } from '../app.service';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit,AfterViewChecked,DoCheck {
-  private boxes:Array<any>;
-  private start:number = 0;
+  public boxes:Array<any>;
+  public start:number = 0;
   constructor( public service: appService) { }
 
   ngOnInit() {
