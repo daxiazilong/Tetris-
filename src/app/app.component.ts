@@ -18,13 +18,18 @@ export class AppComponent implements OnInit, OnDestroy {
   private curContainer = null;
   private isStart:boolean = false;
 
+  public debug: boolean = true;
+
   @ViewChild(InsertDirectiveDirective) adHost: InsertDirectiveDirective;
   @ViewChild(InsertContainerDirective) containerHost: InsertContainerDirective;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,public service: appService) { }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    public service: appService
+  ) { }
   private createComponent(){
     let viewContainerRef = this.adHost.viewContainerRef;
     let component;
-    component = [ShapeYi,ShapeShanComponent,ShapeZhiComponent][Math.round(Math.random()*2)];
+    component = [ShapeYi,ShapeShanComponent,ShapeZhiComponent][ Math.round(Math.random()*2)];
 // ShapeTianComponent我目前还没有完成，
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     this.curComponent = viewContainerRef.createComponent(componentFactory);
@@ -72,6 +77,9 @@ export class AppComponent implements OnInit, OnDestroy {
               break;
       case 'ArrowLeft':
               this.curComponent.instance.moveLeft();
+              break; 
+      case 'ArrowDown':
+              this.curComponent.instance.speedUp();
               break; 
       case 'ArrowUp':
               this.curComponent.instance.transform();

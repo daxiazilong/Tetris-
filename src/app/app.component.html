@@ -9,6 +9,8 @@
   </div>
   <div class="aside"(click) = "destroy()">
      <h5>分数:<br />{{service.scores}}</h5> 
+     <h5 style="margin-top: 25px;">难度:<br />{{ ( service.initialDifficulty -service.difficulty) }}</h5>
   </div>
+  <div class="debug" *ngIf="debug"></div>
 </div>
 

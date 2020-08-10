@@ -31,10 +31,12 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    flex-wrap: wrap;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
+            align-content: center;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
         -ms-flex-pack: center;
@@ -54,6 +56,7 @@
     font-size: 12px;
 }
 .main .aside h5{
+    width: 100%;
     font-size: 12px;
     text-align: center;
 }
@@ -69,4 +72,14 @@
     cursor: pointer;
     font-size: 14px;
     text-align: center;
+}
+.debug{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    padding: 4px;
+    color: #fff;
+    font-size: 12px;
+    background: #000;
+    border-radius: 5px;
 }

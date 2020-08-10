@@ -25,7 +25,7 @@ export class ContainerComponent implements OnInit,AfterViewChecked,DoCheck {
       }  
     })
     if( mark ){
-      this.score();
+      // this.score();
     }
 
   }
@@ -33,16 +33,40 @@ export class ContainerComponent implements OnInit,AfterViewChecked,DoCheck {
     let preLength = this.boxes.length;
     // debugger;
     let count:number = 0;//评分，系统 每消掉一行加1分，连续消掉n行， 分数 = n*n
-    this.boxes.forEach( (item,index) => {
-          if((/1111111111/).test(item.join(''))){
-            this.boxes.splice(index,1);
-            count++;
-          }
-          
-    })
-    this.service.scores += count*count
-    while(this.boxes.length < preLength){
-      this.boxes.unshift([0,0,0,0,0,0,0,0,0,0])
+
+    let realBoxes = [...this.boxes];
+
+    for( let i = 0, L = preLength; i < L ; i++ ){
+      let item = realBoxes[i];
+      if((/1111111111/).test(item.join(''))){
+        realBoxes.splice(i,1);
+        count++;
+        i--;
+        L--;
+      }
+    }
+
+    this.service.scores += ( count*count )
+
+    let needChangeBoxes: boolean = false;
+
+
+    while(realBoxes.length < preLength){
+
+      needChangeBoxes = true;      
+      realBoxes.unshift([0,0,0,0,0,0,0,0,0,0])
+
+    }
+
+    if(needChangeBoxes){
+      this.service.gameBox = this.boxes = realBoxes;
+    }
+    this.changeDifficulty();
+  }
+
+  changeDifficulty(){
+    if( this.service.difficulty > this.service.maxDifficulty ){
+      this.service.difficulty = ( this.service.initialDifficulty - Math.floor(this.service.scores / 10) )
     }
   }
 
