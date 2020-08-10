@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public curContainer = null;
   public isStart:boolean = false;
 
-  public debug: boolean = true;
+  public debug: boolean = false;
 
   @ViewChild(InsertDirectiveDirective, { static: true }) adHost: InsertDirectiveDirective;
   @ViewChild(InsertContainerDirective, { static: true }) containerHost: InsertContainerDirective;
