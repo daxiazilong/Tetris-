@@ -8,6 +8,7 @@ just git clone it and after npm i, type ng serve -o,play this game
 ### transform -> arrowUp
 ### leftMove -> arrowLeft
 ### rightMove -> arrowRight
+### speedUp -> arrowDown( just comlete in shapeYi)
 
 
 # the framework of this project
